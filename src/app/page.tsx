@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
 import Benefits from "@/components/Benefits";
@@ -39,8 +38,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background relative selection:bg-primary-container/10 selection:text-primary">
-      <Navbar />
-
       <main className="flex-grow">
         <div className="reveal-on-scroll">
           <Hero />

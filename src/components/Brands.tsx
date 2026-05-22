@@ -45,16 +45,21 @@ export default function Brands() {
   ];
 
   return (
-    <section className="py-12 border-y border-outline-variant bg-surface-container-low relative z-10 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-[10px] font-bold tracking-[0.25em] text-center uppercase text-on-surface-variant mb-8 font-hanken">
-          Trusted by Independent Visionaries & Luxury Maisons
+    <section className="border-y border-secondary/30 bg-tertiary relative z-10 overflow-hidden flex h-24">
+      {/* Left fixed column */}
+      <div className="hidden md:flex items-center justify-center px-8 border-r border-secondary/30 shrink-0 bg-tertiary z-20">
+        <p className="text-[13px] text-secondary-fixed/70 font-hanken leading-snug">
+          Trusted by fast-<br />growing brands
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 text-on-surface-variant/40">
-          {brands.map((brand) => (
+      </div>
+
+      {/* Marquee container */}
+      <div className="flex-1 overflow-hidden relative flex items-center">
+        <div className="flex w-max animate-marquee h-full items-center">
+          {[...brands, ...brands, ...brands, ...brands].map((brand, i) => (
             <div
-              key={brand.name}
-              className="flex items-center gap-3 hover:text-primary-container transition-colors duration-500 cursor-default transform hover:scale-[1.02]"
+              key={`${brand.name}-${i}`}
+              className="flex h-24 items-center justify-center px-12 md:px-16 border-r border-secondary/30 text-secondary-fixed/80 hover:text-secondary-fixed transition-colors duration-500 cursor-default"
             >
               {brand.logo}
             </div>

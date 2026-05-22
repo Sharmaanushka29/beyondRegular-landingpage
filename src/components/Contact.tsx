@@ -38,12 +38,12 @@ export default function Contact() {
 
             <div className="space-y-4 text-xs text-on-surface-variant">
               <div>
-                <p className="font-semibold text-primary uppercase tracking-wider text-[10px] mb-1">Office</p>
-                <p>Copenhagen / Amsterdam / Tokyo</p>
+                <p className="font-semibold text-primary uppercase tracking-wider text-[10px] mb-1">Location</p>
+                <p>India</p>
               </div>
               <div>
                 <p className="font-semibold text-primary uppercase tracking-wider text-[10px] mb-1">Direct inquiries</p>
-                <p className="hover:text-primary-container underline cursor-pointer">studios@beyondregular.com</p>
+                <a href="mailto:enquire@itsbeyondregular.com" className="hover:text-primary-container underline cursor-pointer">enquire@itsbeyondregular.com</a>
               </div>
             </div>
           </div>
@@ -102,25 +102,25 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Brand */}
                     <div>
-                      <label className="block text-[9px] uppercase tracking-wider text-on-surface-variant mb-2 font-bold label-caps">Brand / Maison Name</label>
+                      <label className="block text-[9px] uppercase tracking-wider text-on-surface-variant mb-2 font-bold label-caps">Business Name</label>
                       <input
                         type="text"
                         required
                         value={formData.brand}
                         onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
                         className="w-full px-1 py-2.5 border-b border-outline-variant bg-transparent text-xs text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:border-primary-container focus:bg-surface-container-low/20 transition-all duration-300"
-                        placeholder="e.g. KRONOS Studio"
+                        placeholder="e.g. Acme Inc."
                       />
                     </div>
                     {/* Website */}
                     <div>
-                      <label className="block text-[9px] uppercase tracking-wider text-on-surface-variant mb-2 font-bold label-caps">Storefront Website</label>
+                      <label className="block text-[9px] uppercase tracking-wider text-on-surface-variant mb-2 font-bold label-caps">Website</label>
                       <input
                         type="url"
                         value={formData.website}
                         onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                         className="w-full px-1 py-2.5 border-b border-outline-variant bg-transparent text-xs text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:border-primary-container focus:bg-surface-container-low/20 transition-all duration-300"
-                        placeholder="e.g. https://kronos.com"
+                        placeholder="e.g. https://yourwebsite.com"
                       />
                     </div>
                   </div>

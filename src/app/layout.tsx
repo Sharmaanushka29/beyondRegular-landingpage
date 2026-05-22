@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk } from "next/font/google";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 const hankenGrotesk = Hanken_Grotesk({
-  variable: "--font-hanken",
   subsets: ["latin"],
+  variable: "--font-hanken",
   display: "swap",
 });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-on-background selection:bg-primary/15 selection:text-primary">
         <div className="noise-overlay" />
+        <Navbar />
         {children}
       </body>
     </html>

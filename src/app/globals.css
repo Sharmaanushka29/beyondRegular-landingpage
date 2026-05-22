@@ -6,16 +6,28 @@
   --color-on-primary: #ffffff;
   --color-on-primary-container: #ff88a3;
   --color-inverse-primary: #ffb1c0;
+  --color-primary-fixed: #ffd9df;
+  --color-primary-fixed-dim: #ffb1c0;
+  --color-on-primary-fixed: #3f0017;
+  --color-on-primary-fixed-variant: #8a143e;
 
   --color-secondary: #6b5c4c;
   --color-on-secondary: #ffffff;
   --color-secondary-container: #f4dfcb;
   --color-on-secondary-container: #716252;
+  --color-secondary-fixed: #f4dfcb;
+  --color-secondary-fixed-dim: #d7c3b0;
+  --color-on-secondary-fixed: #241a0e;
+  --color-on-secondary-fixed-variant: #524436;
 
   --color-tertiary: #4b1b1b;
   --color-on-tertiary: #ffffff;
   --color-tertiary-container: #66302f;
   --color-on-tertiary-container: #e49896;
+  --color-tertiary-fixed: #ffdad8;
+  --color-tertiary-fixed-dim: #ffb3b0;
+  --color-on-tertiary-fixed: #380c0d;
+  --color-on-tertiary-fixed-variant: #6e3635;
 
   --color-background: #fcf9f4;
   --color-on-background: #1c1c19;
@@ -49,6 +61,10 @@
 :root {
   --background: #fcf9f4;
   --on-background: #1c1c19;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -87,19 +103,24 @@ body {
 
 /* 3D Liquid Glass Effect */
 @keyframes glass-shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
-.glass3d { 
-  position: relative; 
+.glass3d {
+  position: relative;
   border-radius: 16px;
-  
+
   /* Translucent refractive border */
   border: 1.5px solid rgba(255, 255, 255, 0.55);
-  
+
   /* Multi-layer progressive drop shadow for floating 3D depth */
-  box-shadow:  
+  box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.08),
     0 2px 4px rgba(0, 0, 0, 0.08),
     0 4px 8px rgba(0, 0, 0, 0.06),
@@ -110,80 +131,74 @@ body {
 }
 
 /* Frosted glass backdrop + specular highlight */
-.glass3d::before { 
-  content: ""; 
-  position: absolute; 
-  inset: 0; 
-  pointer-events: none; 
-  border-radius: inherit; 
-  overflow: hidden; 
-  z-index: 1; 
-  
-  -webkit-backdrop-filter: blur(40px) brightness(1.08) saturate(1.8); 
-  backdrop-filter: blur(40px) brightness(1.08) saturate(1.8); 
-  background: 
+.glass3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 1;
+
+  -webkit-backdrop-filter: blur(40px) brightness(1.08) saturate(1.8);
+  backdrop-filter: blur(40px) brightness(1.08) saturate(1.8);
+  background:
     /* Specular highlight — bright top-left reflection simulating a light source */
-    radial-gradient(
-      ellipse 80% 50% at 20% 0%,
+    radial-gradient(ellipse 80% 50% at 20% 0%,
       rgba(255, 255, 255, 0.6) 0%,
-      transparent 60%
-    ),
+      transparent 60%),
     /* Vertical ambient fill — bright top, darker bottom for volume */
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(255, 255, 255, 0.35) 0%,
       rgba(255, 255, 255, 0.15) 50%,
-      rgba(240, 237, 233, 0.2) 100%
-    );
+      rgba(240, 237, 233, 0.2) 100%);
 }
 
 /* Inner bevel edges + animated light shimmer */
-.glass3d::after { 
-  content: ""; 
-  position: absolute; 
-  inset: 0; 
-  pointer-events: none; 
-  border-radius: inherit; 
-  overflow: hidden; 
-  z-index: 2; 
-  
+.glass3d::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 2;
+
   /* Inner bevel highlights and shadows — these stay fixed */
-  box-shadow: 
-    inset 0 2px 0 0 rgba(255, 255, 255, 0.8), 
-    inset 2px 0 0 0 rgba(255, 255, 255, 0.3), 
-    inset -1px 0 0 0 rgba(0, 0, 0, 0.04), 
-    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.12), 
+  box-shadow:
+    inset 0 2px 0 0 rgba(255, 255, 255, 0.8),
+    inset 2px 0 0 0 rgba(255, 255, 255, 0.3),
+    inset -1px 0 0 0 rgba(0, 0, 0, 0.04),
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.12),
     inset 0 4px 12px -2px rgba(255, 255, 255, 0.25);
-    
+
   /* Animated light sweep — only the gradient slides, bevels stay put */
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.4) 45%,
-    rgba(255, 255, 255, 0.12) 50%,
-    transparent 55%
-  );
+  background: linear-gradient(105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.4) 45%,
+      rgba(255, 255, 255, 0.12) 50%,
+      transparent 55%);
   background-size: 300% 100%;
   animation: glass-shimmer 5s ease-in-out infinite;
 }
 
-.glass3d > * { 
-  position: relative; 
-  z-index: 3; 
+.glass3d>* {
+  position: relative;
+  z-index: 3;
 }
 
 /* 3D Glass Circle Effect for How It Works Icons */
 .glass-circle {
   position: relative;
-  
+
   /* Translucent frosted glass base */
   background: rgba(243, 240, 235, 0.08);
   backdrop-filter: blur(24px) brightness(1.1);
   -webkit-backdrop-filter: blur(24px) brightness(1.1);
-  
+
   /* Refractive edge border */
   border: 1px solid rgba(243, 240, 235, 0.25);
-  
+
   /* Multi-layer 3D shadow stack */
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.15),
@@ -202,12 +217,10 @@ body {
   border-radius: inherit;
   pointer-events: none;
   z-index: 1;
-  
-  background: radial-gradient(
-    ellipse 60% 40% at 30% 20%,
-    rgba(255, 255, 255, 0.4) 0%,
-    transparent 60%
-  );
+
+  background: radial-gradient(ellipse 60% 40% at 30% 20%,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 60%);
 }
 
 /* Inner bevel + animated shimmer */
@@ -218,21 +231,19 @@ body {
   border-radius: inherit;
   pointer-events: none;
   z-index: 2;
-  
+
   /* Fixed inner bevel */
   box-shadow:
     inset 0 1.5px 0 rgba(255, 255, 255, 0.5),
     inset 1.5px 0 0 rgba(255, 255, 255, 0.2),
     inset 0 -1.5px 3px rgba(0, 0, 0, 0.25);
-  
+
   /* Animated light sweep */
-  background: linear-gradient(
-    120deg,
-    transparent 35%,
-    rgba(255, 255, 255, 0.3) 45%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 60%
-  );
+  background: linear-gradient(120deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.3) 45%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 60%);
   background-size: 300% 100%;
   animation: glass-shimmer 6s ease-in-out infinite;
 }
@@ -343,4 +354,32 @@ body {
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
+}
+
+/* Folio Interactive Pricing Styles */
+.signature-font {
+  font-family: "Georgia", serif;
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .folio-card {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), flex 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .folio-container:hover .folio-card {
+    flex: 1;
+    opacity: 0.75;
+  }
+
+  .folio-container .folio-card:hover {
+    flex: 2.5;
+    opacity: 1;
+  }
+
+  .unfold-content {
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+  }
 }
