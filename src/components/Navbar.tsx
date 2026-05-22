@@ -37,7 +37,6 @@ export default function Navbar() {
         position: "fixed",
         top: "1rem",
         left: "50%",
-        transform: "translateX(-50%)",
         width: "calc(100% - 2rem)",
         maxWidth: "72rem",
         zIndex: 9998,
